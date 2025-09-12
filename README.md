@@ -1,17 +1,15 @@
-Distributed Computing - Assignment 1
 Distributing Computing Assignment -1
-Group Number:
+**Group Number:**
 GROUP-2
 Contribution Table:
 Sl. No.	Name (as appears in Canvas) / ID NO	Contribution
 1	Anurag Vaishnava / 2024mt03544	Development, integration, testing
 2	R, Adithiya / 2024MT03577	Development, integration, testing
-3	Jinu George / 2024mt03559
-Development, integration, testing
+3	Jinu George / 2024mt03559   Development, integration, testing
 4	Amulya Nrusimhadri/ 2024MT03522	Development, integration, testing
 5	BALAMURUGAN. E / 2024mt03542	Development, integration, testing
 
-GitHub (shared git repo):
+**GitHub (shared git repo):**
 https://github.com/jinugeorge2290/BITS_PILANI_DS_Assignment1_Group2.git
 Language used for Implementation:
 •	Python
@@ -19,20 +17,20 @@ Language used for Implementation:
 
 Prerequisites Before Running the Scripts
 Before executing the scripts, ensure the following steps are completed on all nodes (Server 1, Server 2, and Client):
-Step 1 – Install pip
+**Step 1** – Install pip
 Since Python is already installed on all machines, verify that pip is available.
 If not, install it using the following command on each server and the client machine:
 sudo dnf install python3-pip
-Step 2 – Create Required Directories
+**Step 2** – Create Required Directories
 Create the directories for storing files on both Server 1 and Server 2:
 mkdir -p ~/distributed_system/files/server1
 mkdir -p ~/distributed_system/files/server2
 These directories will be used to store the files that the servers will serve.
 
-Step 3 – Identify IP Addresses
+**Step 3** – Identify IP Addresses
 Retrieve the IP addresses of Server 1, Server 2, and the Client machine.
 This is required to configure network communication between them.
-Step 4 – Update IP Addresses in Scripts 
+**Step 4** – Update IP Addresses in Scripts 
 Open server1.py, server2.py, and client.py and update the IP address on 
 
 Also use the below commands to open ports on nodes 
@@ -42,13 +40,13 @@ o	Opens TCP port 5001 for SERVER1.
 o	Opens TCP port 5002 for SERVER2.
 
 
-SERVER2
+**SERVER2**
 Listens on: Port 5002 (0.0.0.0:5002)
 Only SERVER1 connects to SERVER2 on this port to request files.
-SERVER1
+**SERVER1**
 Listens on: Port 5001 (0.0.0.0:5001)
 Only CLIENT connects to SERVER1 on this port to request files.
-CLIENT
+**CLIENT**
 Connects to: SERVER1 on port 5001 to request files.
 
 
@@ -56,7 +54,7 @@ Connects to: SERVER1 on port 5001 to request files.
 
 
 
-SERVER1 Code:
+**SERVER1 Code:**
 
 
 import socket
