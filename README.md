@@ -219,14 +219,16 @@ if __name__ == "__main__":
 | Test Case                                             | Pre-Condition / Setup                                                        | Input (File Request) | Expected SERVER1 Behavior                                                                              | Expected CLIENT Output                    |
 | ----------------------------------------------------- | ---------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------- |
 | Test case 1 – File exists on both servers (identical) | Same file with identical content present in server1 and server2 directories. | file1.txt            | SERVER1 finds local file, requests from SERVER2, compares contents → identical → sends SINGLE\|<file>. | Client receives single copy of file1.txt. |
-![[1.png]]
+
+![Image Alt](https://github.com/jinugeorge2290/BITS_PILANI_DS_Assignment1_Group2/blob/main/1.png?raw=true)
 
 ### 2 - File exists on both servers (with different content)
 
 | Test Case                                   | Pre-Condition / Setup                                                                 | Input (File Request) | Expected SERVER1 Behavior                                                                                                             | Expected CLIENT Output                         |
 | ------------------------------------------- | ------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | 2 – File exists on both servers (different) | File with same name but different content present in server1 and server2 directories. | File1.txt            | SERVER1 finds local file, requests from SERVER2, compares contents → different → sends DIFFERENT\|SERVER1\|<data1>\|SERVER2\|<data2>. | Client receives both versions and can compare. |
-![[2.png]]
+
+![Image Alt](https://github.com/jinugeorge2290/BITS_PILANI_DS_Assignment1_Group2/blob/main/2.png?raw=true)
 
 ### 3 - File exists only on SERVER1
 
@@ -234,7 +236,8 @@ if __name__ == "__main__":
 | ------------------------------- | --------------------------------------- | -------------------- | ----------------------------------------------------------------------------- | ----------------------------------------- |
 | 3 – File exists only on SERVER1 | File present only in server1 directory. | File1.txt            | SERVER1 finds file locally, SERVER2 returns NOT_FOUND → sends SINGLE\|<file>. | Client receives single copy from SERVER1. |
 
-![[3.png]]
+![Image Alt](https://github.com/jinugeorge2290/BITS_PILANI_DS_Assignment1_Group2/blob/main/3.png?raw=true)
+
 
 ### 4 - File missing on both servers
 
@@ -242,7 +245,7 @@ if __name__ == "__main__":
 | -------------------------------- | ------------------------------------- | -------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------- |
 | 4 – File missing on both servers | File not present in either directory. | File1.txt            | SERVER1 finds no local file, SERVER2 returns NOT_FOUND → sends NOT_FOUND. | Client displays 'File not found on any server' message. |
 
-![[4.png]]
+![Image Alt](https://github.com/jinugeorge2290/BITS_PILANI_DS_Assignment1_Group2/blob/main/4.png?raw=true)
  
 
 
