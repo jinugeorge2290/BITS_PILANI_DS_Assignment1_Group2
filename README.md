@@ -1,13 +1,13 @@
 ## Distributing Computing Assignment -1
 ## Group Number: GROUP-2
 
-| **Sl. No.** | **Name (as appears in Canvas) / ID NO** | **Contribution**                                                                                                                                                                                                                                                               |
-| ----------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1           | Anurag Vaishnava / 2024mt03544          | Worked on Server1<br>which manages incoming client requests, forwards queries to Server2, and performs file comparison logic. <br>Setup AWS LAB with required security policies and ports for incoming and outgoing traffic<br>Deployment and testing use cases (Together)<br> |
-| 2           | R, Adithiya / 2024MT03577               | Worked on Server1<br>which manages incoming client requests, forwards queries to Server2, and performs file comparison logic. <br>Setup AWS LAB with required security policies and ports for incoming and outgoing traffic<br>Deployment and testing use cases (Together)     |
-| 3           | Jinu George / 2024mt03559               | Worked on Server2<br>Responsible for storing files, serving requests from Server1, and handling error cases such as missing files.<br>Deployed to github and prepared Readme file<br>Deployment and testing use cases (Together)                                               |
-| 4           | Amulya Nrusimhadri/ 2024MT03522         | Worked on Server2<br>Responsible for storing files, serving requests from Server1, and handling error cases such as missing files.<br>Deployed to github and prepared Readme file<br>Deployment and testing use cases (Together)                                               |
-| 5           | BALAMURUGAN. E / 2024mt03542            | Worked on Client Code<br>Independently developed and deployed the Client Code.<br>This component initiates file requests, receives responses from Server1, and manages version conflicts on the client side.<br>Reviewed test cases and final verification.                    |
+| **Sl. No.** | **Name (as appears in Canvas) / ID NO** | **Contribution**                                                                                                                                                                                                                                                                                                  |
+| ----------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1           | Anurag Vaishnava / 2024mt03544          | Worked on Server1 which manages incoming client requests, forwards queries to Server2, and performs file comparison logic.  <br>Prerequisits like Pip installation with required security policies and ports for incoming and outgoing traffic  <br>on BIT LAB Nodes. Deployment and testing use cases (Together) |
+| 2           | R, Adithiya / 2024MT03577               | Worked on Server1 which manages incoming client requests, forwards queries to Server2, and performs file comparison logic.  <br>Prerequisits like Pip installation with required security policies and ports for incoming and outgoing traffic  <br>on BIT LAB Nodes. Deployment and testing use cases (Together) |
+| 3           | Jinu George / 2024mt03559               | Worked on Server2 which is responsible for storing files, serving requests from Server1, and handling error cases such as missing files.<br>Deployed to github and prepared Readme file<br>Deployment and testing use cases (Together)                                                                            |
+| 4           | Amulya Nrusimhadri/ 2024MT03522         | Worked on Server2 which is responsible for storing files, serving requests from Server1, and handling error cases such as missing files.<br>Deployed to github and prepared Readme file<br>Deployment and testing use cases (Together)                                                                            |
+| 5           | BALAMURUGAN. E / 2024mt03542            | Worked on Client Code<br>Independently developed and deployed the Client Code.<br>This component initiates file requests, receives responses from Server1, and manages version conflicts on the client side.<br>Reviewed test cases and final verification.                                                       |
 
 
 ## GitHub (shared git repo):
@@ -198,7 +198,7 @@ def main():
             parts = response.split(b"|")
             server1_data = parts[2]
             server2_data = parts[4]
-            print(f"⚠️ File contents differ between SERVER1 and SERVER2.")
+            print(f"File contents differ between SERVER1 and SERVER2.")
             with open(f"client_SERVER1_{file_name}", "wb") as f:
                 f.write(server1_data)
             with open(f"client_SERVER2_{file_name}", "wb") as f:
@@ -219,18 +219,22 @@ if __name__ == "__main__":
 | Test Case                                             | Pre-Condition / Setup                                                        | Input (File Request) | Expected SERVER1 Behavior                                                                              | Expected CLIENT Output                    |
 | ----------------------------------------------------- | ---------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------- |
 | Test case 1 – File exists on both servers (identical) | Same file with identical content present in server1 and server2 directories. | file1.txt            | SERVER1 finds local file, requests from SERVER2, compares contents → identical → sends SINGLE\|<file>. | Client receives single copy of file1.txt. |
+![[1.png]]
 
 ### 2 - File exists on both servers (with different content)
 
 | Test Case                                   | Pre-Condition / Setup                                                                 | Input (File Request) | Expected SERVER1 Behavior                                                                                                             | Expected CLIENT Output                         |
 | ------------------------------------------- | ------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | 2 – File exists on both servers (different) | File with same name but different content present in server1 and server2 directories. | File1.txt            | SERVER1 finds local file, requests from SERVER2, compares contents → different → sends DIFFERENT\|SERVER1\|<data1>\|SERVER2\|<data2>. | Client receives both versions and can compare. |
+![[2.png]]
+
 ### 3 - File exists only on SERVER1
 
 | Test Case                       | Pre-Condition / Setup                   | Input (File Request) | Expected SERVER1 Behavior                                                     | Expected CLIENT Output                    |
 | ------------------------------- | --------------------------------------- | -------------------- | ----------------------------------------------------------------------------- | ----------------------------------------- |
 | 3 – File exists only on SERVER1 | File present only in server1 directory. | File1.txt            | SERVER1 finds file locally, SERVER2 returns NOT_FOUND → sends SINGLE\|<file>. | Client receives single copy from SERVER1. |
 
+![[3.png]]
 
 ### 4 - File missing on both servers
 
@@ -238,8 +242,7 @@ if __name__ == "__main__":
 | -------------------------------- | ------------------------------------- | -------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------- |
 | 4 – File missing on both servers | File not present in either directory. | File1.txt            | SERVER1 finds no local file, SERVER2 returns NOT_FOUND → sends NOT_FOUND. | Client displays 'File not found on any server' message. |
 
-
-
+![[4.png]]
  
 
 
