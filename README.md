@@ -22,34 +22,35 @@ https://github.com/jinugeorge2290/BITS_PILANI_DS_Assignment1_Group2.git
 ## Prerequisites Before Running the Scripts
 Before executing the scripts, ensure the following steps are completed on all nodes (Server 1, Server 2, and Client):
 #### **Step 1** – Install pip
-Since Python is already installed on all machines, verify that pip is available.
-If not, install it using the following command on each server and the client machine:
-sudo dnf install python3-pip
+- Since Python is already installed on all machines, verify that pip is available.
+- If not, install it using the following command on each server and the client machine:
+- sudo dnf install python3-pip
 #### **Step 2** – Create Required Directories
-Create the directories for storing files on both Server 1 and Server 2:
-mkdir -p ~/distributed_system/files/server1
-mkdir -p ~/distributed_system/files/server2
+- Create the directories for storing files on both Server 1 and Server 2:
+- mkdir -p ~/distributed_system/files/server1
+- mkdir -p ~/distributed_system/files/server2
 These directories will be used to store the files that the servers will serve.
 #### **Step 3** – Identify IP Addresses
-Retrieve the IP addresses of Server 1, Server 2, and the Client machine.
-This is required to configure network communication between them.
+- Retrieve the IP addresses of Server 1, Server 2, and the Client machine.
+- This is required to configure network communication between them.
 #### **Step 4** – Update IP Addresses in Scripts 
-Open server1.py, server2.py, and client.py and update the IP address on 
-Also use the below commands to open ports on nodes 
-•	sudo firewall-cmd --zone=public --add-port=5001/tcp --permanent
-o	Opens TCP port 5001 for SERVER1.
-•	sudo firewall-cmd --zone=public --add-port=5002/tcp --permanent
-o	Opens TCP port 5002 for SERVER2.
+- Open server1.py, server2.py, and client.py and update the IP address on 
+Also, use the commands below to open ports on nodes
+```
+sudo firewall-cmd --zone=public --add-port=5001/tcp --permanent
+Opens TCP port 5001 for SERVER1.
+sudo firewall-cmd --zone=public --add-port=5002/tcp --permanent
+Opens TCP port 5002 for SERVER2.
+```
 
-
-**SERVER2**
-Listens on: Port 5002 (0.0.0.0:5002)
-Only SERVER1 connects to SERVER2 on this port to request files.
-**SERVER1**
-Listens on: Port 5001 (0.0.0.0:5001)
-Only CLIENT connects to SERVER1 on this port to request files.
-**CLIENT**
-Connects to: SERVER1 on port 5001 to request files.
+#### **SERVER2**
+- Listens on: Port 5002 (0.0.0.0:5002)
+- Only SERVER1 connects to SERVER2 on this port to request files.
+#### **SERVER1**
+- Listens on: Port 5001 (0.0.0.0:5001)
+- Only CLIENT connects to SERVER1 on this port to request files.
+#### **CLIENT**
+- Connects to: SERVER1 on port 5001 to request files.
 
 
 
@@ -127,7 +128,7 @@ if __name__ == "__main__":
 
 
 
-SERVER2 Code:
+**SERVER2 Code:**
 
 ```bash
 
@@ -173,7 +174,7 @@ if __name__ == "__main__":
 ```
 
  
-CLIENT Code:
+**CLIENT Code:**
 ```bash
 import socket
 
